@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>602</width>
+    <height>587</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Imaging Modalities Final Project</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(201, 105, 92);</string>
+      </property>
+      <property name="text">
+       <string>Multi Planner Reconstruction</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="browse_button">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(230, 255, 250);</string>
+        </property>
+        <property name="text">
+         <string>Open</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QPushButton" name="save_button">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(230, 255, 250);</string>
+          </property>
+          <property name="text">
+           <string>Save Slice</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="save_box">
+          <item>
+           <property name="text">
+            <string>Axial</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Coronal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sagittal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MPR</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <layout class="QGridLayout" name="axialGrid">
+          <item row="1" column="0">
+           <widget class="QSlider" name="axial_vSlider">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitVCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="pageStep">
+             <number>9</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="sliderPosition">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="axialLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Axial (Transpose)</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="axial_vBox">
+            <property name="spacing">
+             <number>9</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="axial_hBox">
+              <item>
+               <widget class="QGraphicsView" name="window1">
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSlider" name="axial_hSlider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>1</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitHCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="coronalGrid">
+          <item row="1" column="0">
+           <widget class="QSlider" name="coronal_vSlider">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitVCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="pageStep">
+             <number>9</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="sliderPosition">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="coronal_vBox">
+            <item>
+             <layout class="QHBoxLayout" name="coronal_hBox">
+              <item>
+               <widget class="QGraphicsView" name="window2">
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="coronalLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Coronal</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSlider" name="coronal_hSlider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>1</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitHCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QGridLayout" name="saggitalGrid">
+          <item row="1" column="0">
+           <widget class="QSlider" name="sagittal_vSlider">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitVCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="pageStep">
+             <number>9</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="sliderPosition">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="saggital_vBox">
+            <item>
+             <layout class="QHBoxLayout" name="saggital_hBox">
+              <item>
+               <widget class="QGraphicsView" name="window3">
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSlider" name="sagittal_hSlider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>1</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitHCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="sagittalLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Sagittal</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="mprGrid">
+          <item row="2" column="0">
+           <widget class="QSlider" name="mpr_hSlider">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>SplitVCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="pageStep">
+             <number>9</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+            <property name="sliderPosition">
+             <number>128</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="mprLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>MPR</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QVBoxLayout" name="mpr_vBox">
+            <item>
+             <layout class="QHBoxLayout" name="mpr_hBox">
+              <item>
+               <widget class="QGraphicsView" name="window4">
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="generate_button">
+            <property name="text">
+             <string>Generate</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Angle:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="angle_mpr">
+              <property name="inputMethodHints">
+               <set>Qt::ImhPreferNumbers</set>
+              </property>
+              <property name="text">
+               <string>45</string>
+              </property>
+              <property name="maxLength">
+               <number>4</number>
+              </property>
+              <property name="frame">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="planes_box">
+              <item>
+               <property name="text">
+                <string>Axial</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Coronal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Sagittal</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>602</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>axial_hSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>coronal_hSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>538</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coronal_hSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>axial_hSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>axial_vSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sagittal_hSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>21</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>431</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sagittal_hSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>axial_vSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>422</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>25</x>
+     <y>355</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sagittal_vSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>coronal_vSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>22</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>472</x>
+     <y>262</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coronal_vSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sagittal_vSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>26</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
