@@ -163,6 +163,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
             self.ui.axial_vSlider.setMaximum(self.v2-1)
             self.ui.coronal_hSlider.setMaximum(self.v1-1)
             self.ui.axial_hSlider.setMaximum(self.v1-1)
+            self.ui.mpr_hSlider.setMaximum(self.diag_arr.shape[2]-1)
 
             # Initial Values
             self.ui.sagittal_vSlider.setValue(self.ui.sagittal_vSlider.maximum()//2)
