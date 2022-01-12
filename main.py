@@ -164,7 +164,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
             self.ui.coronal_hSlider.setMaximum(self.v1-1)
             self.ui.axial_hSlider.setMaximum(self.v1-1)
             self.ui.mpr_hSlider.setMaximum(self.diag_arr.shape[2]-1)
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 146b3579232ccef00efa1fa3a4b50df899f3aaca
             # Initial Values
             self.ui.sagittal_vSlider.setValue(self.ui.sagittal_vSlider.maximum()//2)
             self.ui.coronal_vSlider.setValue(self.ui.coronal_vSlider.maximum()//2)
