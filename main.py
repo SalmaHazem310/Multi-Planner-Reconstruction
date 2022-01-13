@@ -1,5 +1,6 @@
 import cv2
 from numpy.core.fromnumeric import shape
+from pyqtgraph.metaarray.MetaArray import axis
 from GUI import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets,uic
 from PyQt5.QtGui import QPixmap, QImage
@@ -96,7 +97,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         # Get the middle lice of all planes
         axial_image = self.imgs[:, :, img_shape[2]//2]
         coronal_image = np.flip(self.imgs[img_shape[0]//2, :, :].T)
-        sagittal_image = np.flip(self.imgs[:, img_shape[1]//2, :].T)
+        sagittal_image = np.flip(np.flip(self.imgs[:, img_shape[1]//2, :].T), axis= 1)
         self.diag_arr = scipy.ndimage.interpolation.rotate(self.imgs, angle= 45, axes=(0,1))
 
         # Set value of sliders based on shapes of generated images
@@ -124,26 +125,26 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         """
         if len(self.frames):
             # Values of Sliders
-            self.sv_loc = self.ui.sagittal_vSlider.value()
+            self.sv_loc = abs(self.ui.sagittal_vSlider.value() - self.v3 + 1)
             self.av_loc = self.ui.axial_vSlider.value()
-            self.ah_loc = self.ui.axial_hSlider.value()
+            self.ah_loc = abs(self.ui.axial_hSlider.value() - self.v1 + 1)
             self.sh_loc = self.ui.sagittal_hSlider.value()
-            self.cv_loc = self.ui.coronal_vSlider.value()
-            self.ch_loc = self.ui.coronal_hSlider.value()
+            self.cv_loc = abs(self.ui.coronal_vSlider.value() - self.v3 + 1)
+            self.ch_loc = abs(self.ui.coronal_hSlider.value() - self.v1 + 1)
 
             # Get slices of each plane based on sliders' values 
             self.axial = (self.imgs[:, :, self.sv_loc])
             self.coronal = np.flip(self.imgs[self.av_loc, :, :].T)
-            self.sagittal = np.flip(self.imgs[:, self.ah_loc, :].T)
+            self.sagittal = np.flip(np.flip(self.imgs[:, self.ah_loc, :].T), axis= 1)
 
             # Axial Plane
-            self.plot_line_on_view(self.ui.window1, self.axial, self.ah_loc, self.av_loc, Qt.red, Qt.yellow)
+            self.plot_line_on_view(self.ui.window1, self.axial, abs(self.ah_loc- self.v1 + 1), self.av_loc, Qt.red, Qt.yellow)
         
             # Coronal Plane
-            self.plot_line_on_view(self.ui.window2, self.coronal, self.ch_loc, self.cv_loc, Qt.red, Qt.green)
+            self.plot_line_on_view(self.ui.window2, self.coronal, abs(self.ch_loc - self.v1 + 1), abs(self.cv_loc - self.v3 + 1), Qt.red, Qt.green)
         
             # Sagittal Plane
-            self.plot_line_on_view(self.ui.window3, self.sagittal, self.sh_loc, self.sv_loc, Qt.yellow, Qt.green)
+            self.plot_line_on_view(self.ui.window3, self.sagittal, self.sh_loc, abs(self.sv_loc- self.v3 + 1), Qt.yellow, Qt.green)
 
         else:
             self.msg.critical(self, 'ERROR OCCURED','No DICOM folder chosen')
@@ -159,7 +160,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
             self.v1, self.v2, self.v3 = self.imgs.shape
             self.ui.sagittal_vSlider.setMaximum(self.v3- 1)
             self.ui.coronal_vSlider.setMaximum(self.v3 - 1)
-            self.ui.sagittal_hSlider.setMaximum(self.v1-1)
+            self.ui.sagittal_hSlider.setMaximum(self.v2-1)
             self.ui.axial_vSlider.setMaximum(self.v2-1)
             self.ui.coronal_hSlider.setMaximum(self.v1-1)
             self.ui.axial_hSlider.setMaximum(self.v1-1)
